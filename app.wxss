@@ -1,0 +1,6 @@
+/**app.wxss**/
+page{
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    color: #333;
+    font-size: 26rpx;
+}
