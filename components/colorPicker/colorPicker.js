@@ -1,15 +1,14 @@
 Component({
   behaviors: [],
   properties: {
-    cusColor: {
+    cus: {
       type: Array,
       value: ['#000', '#fff', '#f00', '#0f0', '#00f', '#ff0', '#0ff','#f0f']
     },
-    colorShow: {
+    color: {
       type: String,
-      value: 'rgba(0,0,0,1)',
-      observer(newVal, oldVal, changedPath) {
-        this._colorShowChange(newVal, oldVal)
+      observer(newVal, oldVal) {
+        this._colorChange(newVal, oldVal)
       }
     }
   },
@@ -38,7 +37,7 @@ Component({
         detail = e.detail;
       pageData.hslaArr[dataset.idx] = detail.value
       // 转换为rgba
-      pageData.colorShow = _this._hslaToRgba(pageData.hslaArr)
+      pageData.color = _this._hslaToRgba(pageData.hslaArr)
       _this.setData(pageData)
     },
 
@@ -47,33 +46,62 @@ Component({
       let
         dataset = e.currentTarget.dataset,
         rgba = this._hexToRgba(dataset.color)
-      this.triggerEvent('colorsel', {color: rgba});
+      this.triggerEvent('color', {color: rgba});
       this.setData({
-        colorShow: rgba
+        color: rgba
       })
     },
 
     _colorConfirm(){
-      this.triggerEvent('colorsel', {color: this.data.colorShow});
+      this.triggerEvent('color', {color: this.data.color});
     },
 
     // 监听颜色变化
-    _colorShowChange(newVal, oldVal){
+    _colorChange(newVal, oldVal){
       let 
         _this = this,
         pageData = Object.assign({}, _this.data),
         reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/,
         rgba = [];
-      if (reg.test(newVal)){
-        newVal = this._hexToRgba(newVal)
-      }
-      if (newVal){
-        rgba = newVal.split('(')[1].split(')')[0].split(',')
+      if (newVal) {
+        if (reg.test(newVal)) {
+          newVal = this._hexToRgba(newVal)
+        }
+        rgba = _this._getNum(newVal)
       } else {
-        rgba = oldVal.split('(')[1].split(')')[0].split(',')
+        rgba = _this._getNum(oldVal)
       }
       pageData.hslaArr = this.rgbaToHsla(rgba)
       _this.setData(pageData)
+      _this._sliderBgColor(pageData.hslaArr[0])
+    },
+
+    // 对应颜色背景
+    _sliderBgColor(val){
+      let 
+        _this = this,
+        pageData = Object.assign({}, _this.data),
+        sbg = [], lbg = [], abg = [];
+      for (let i = 0; i < 100; i = i + 20) {
+        sbg.push('hsla(' + val * 3.6 + ',' + i + '%,' + '50%, 1)')
+        lbg.push('hsla(' + val * 3.6 + ',100%,' + i + '%, 1)')
+        abg.push('hsla(' + val * 3.6 + ',100%, 50%, ' + i / 100 + ')')
+      }
+      pageData.sbg = sbg
+      pageData.lbg = lbg
+      pageData.abg = abg
+      _this.setData(pageData)
+    },
+
+    /**
+     * 提取字符串中的数字，并返回数组
+     * @init String rgba数值
+     * @return Array 字符串中的数字值的数组
+     */
+    _getNum(str) {
+      let numArr = [];
+      str.replace(/[0-9]+/g, (k)=>{ numArr.push(k) });
+      return numArr
     },
 
     /**
@@ -83,7 +111,6 @@ Component({
      * @return String 格式：rgba(xx，xx，xx，x))
      */
     _hslaToRgba(hsla){
-      console.log(88,hsla)
       let 
         r, g, b,
         h = hsla[0]/100, 
@@ -117,23 +144,23 @@ Component({
      * @init String 16进制颜色值字符串
      * @return String 格式：rgba(xx，xx，xx，x))
      */
-    _hexToRgba(HEX, opacity=1) {
+    _hexToRgba(hex, opacity=1) {
       let reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
-      if (HEX && reg.test(HEX)) {
-        if (HEX.length === 4) {
-          var HEXNew = "#";
+      if (hex && reg.test(hex)) {
+        if (hex.length === 4) {
+          var hexNew = "#";
           for (var i = 1; i < 4; i += 1) {
-            HEXNew += HEX.slice(i, i + 1).concat(HEX.slice(i, i + 1));
+            hexNew += hex.slice(i, i + 1).concat(hex.slice(i, i + 1));
           }
-          HEX = HEXNew;
+          hex = hexNew;
         }
-        var HEXChange = [];
+        var hexChange = [];
         for (var i = 1; i < 7; i += 2) {
-          HEXChange.push(parseInt("0x" + HEX.slice(i, i + 2)));
+          hexChange.push(parseInt("0x" + hex.slice(i, i + 2)));
         }
-        return "rgba(" + HEXChange.join(",") + ',' + opacity + ")";
+        return "rgba(" + hexChange.join(",") + ',' + opacity + ")";
       } else {
-        return HEX;
+        return hex;
       }
     },
 
@@ -154,7 +181,7 @@ Component({
       var max = Math.max(r, g, b), min = Math.min(r, g, b);
       var h, s, l = (max + min) / 2;
       if (max == min) {
-        h = s = 0; // achromatic
+        h = s = 0; 
       } else {
         var d = max - min;
         s = l > 0.5 ? d / (2 - max - min) : d / (max + min);

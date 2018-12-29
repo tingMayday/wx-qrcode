@@ -16,20 +16,19 @@
 </view>
 
 <view class="canvas_box">
-  <canvas canvas-id="canvas"></canvas>
+  <canvas canvas-id="canvas" hidden='{{showLayerBox}}' ></canvas>
 </view>
 
 <view class="btn_area flexBox">
   <view class="btn btn_1" bindtap="code">生成二维码</view>
-  <view class="btn btn_2" bindtap="download">下载图片</view>
+  <view class="btn btn_2" bindtap="download">保存图片</view>
 </view>
 
 
 <view class="mask" hidden='{{!showLayerBox}}' bindtap="hideLayerBox"></view>
 <view class="layer_box" animation="{{animationData}}">
   <color-picker 
-    class='color_picker'
-    cus-color="{{cp_cColor}}" 
-    color-show="{{cp_colorShow}}" 
-    bindcolorsel="colorSel" />
+    cus="{{cp_cus}}" 
+    color="{{cp_color}}" 
+    bindcolor="color" />
 </view>

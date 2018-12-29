@@ -7,8 +7,8 @@ Page({
     colorLight: '#fff',
     colorDark: '#000',
     colorTypeSel: 'colorLight',
-    cp_cColor: ['#000', '#fff', '#f00', '#0f0', '#00f', '#ff0', '#0ff', '#f0f'],
-    cp_colorShow: ''
+    cp_cus: ['#000', '#fff', '#f00', '#0f0', '#00f', '#ff0', '#0ff', '#f0f'],
+    cp_color: ''
   },
 
   onLoad: function () {
@@ -56,11 +56,12 @@ Page({
         duration: 500,
         timingFunction: 'ease',
       });
-    animation.opacity("1").step()
+    animation.opacity("1")
+    animation.width("80%").step()
     pageData.animationData = animation.export();
     pageData.showLayerBox = true;
     pageData.colorTypeSel = dataset.type
-    pageData.cp_colorShow = pageData[dataset.type]
+    pageData.cp_color = pageData[dataset.type]
     _this.setData(pageData)
   },
 
@@ -72,14 +73,15 @@ Page({
         duration: 500,
         timingFunction: 'ease',
       });
-    animation.opacity("0").step()
+    animation.opacity("0")
+    animation.width("0").step()
     pageData.animationData = animation.export();
     pageData.showLayerBox = false
     _this.setData(pageData)
   },
 
   // 模块数据通讯
-  colorSel(e){
+  color(e){
     let
      _this = this,
      pageData = Object.assign({}, _this.data);

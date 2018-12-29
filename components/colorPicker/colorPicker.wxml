@@ -1,10 +1,10 @@
 <custom-component>
   <view class="color_pick_box">
-    <view class="color_show" style="background:{{colorShow}}"></view>
+    <view class="color_show" style="background:{{color}}"></view>
     <view class="coutom_color flexBox">
       <view 
         class="custom_color_item" 
-        wx:for="{{cusColor}}" 
+        wx:for="{{cus}}" 
         wx:key
         style="background:{{item}}"
         data-color="{{item}}"
@@ -16,29 +16,29 @@
         <view class="flexBox">
           <view class="label">色相</view>
           <view class="flex1">
-            <slider block-size="12" value="{{hslaArr[0]}}" bindchanging="_hslaSlider" data-idx="0"></slider>
+            <slider block-size="12" value="{{hslaArr[0]}}" bindchanging="_hslaSlider" bindchange="_hslaSlider" data-idx="0"></slider>
             <view class="Hcolor h30"></view>
           </view>
         </view>
         <view class="flexBox">
           <view class="label">饱和度</view>
           <view class="flex1">
-            <slider block-size="12" value="{{hslaArr[1]}}" bindchanging="_hslaSlider" data-idx="1"></slider>
-            <view class="Scolor h30"></view>
+            <slider block-size="12" value="{{hslaArr[1]}}" bindchanging="_hslaSlider" bindchange="_hslaSlider" data-idx="1"></slider>
+            <view class="Scolor h30" style="background: linear-gradient(to right, {{sbg}})"></view>
           </view>
         </view>
         <view class="flexBox">
           <view class="label">亮度</view>
           <view class="flex1">
-            <slider block-size="12" value="{{hslaArr[2]}}" bindchanging="_hslaSlider" data-idx="2"></slider>
-            <view class="Lcolor h30"></view>
+            <slider block-size="12" value="{{hslaArr[2]}}" bindchanging="_hslaSlider" bindchange="_hslaSlider" data-idx="2"></slider>
+            <view class="Lcolor h30" style="background: linear-gradient(to right, {{lbg}})"></view>
           </view>
         </view>
         <view class="flexBox">
           <view class="label">透明度</view>
           <view class="flex1">
-            <slider block-size="12" value="{{hslaArr[3]}}" bindchanging="_hslaSlider" data-idx="3"></slider>
-            <view class="Acolor h30"></view>
+            <slider block-size="12" value="{{hslaArr[3]}}" bindchanging="_hslaSlider" bindchange="_hslaSlider" data-idx="3"></slider>
+            <view class="Acolor h30" style="background: linear-gradient(to right, {{abg}})"></view>
           </view>
         </view>
       </view>

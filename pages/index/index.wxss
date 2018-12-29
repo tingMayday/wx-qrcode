@@ -5,6 +5,7 @@ page{
   box-sizing: border-box;
 }
 .canvas_box{
+  height: 200px;
   padding: 100rpx;
   border: 2rpx dashed #85c682;
 }
@@ -71,14 +72,16 @@ input{
   right: 0;
   background: rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  z-index: 98;
+  z-index: 9998;
 }
 .layer_box{
   position: fixed;
   top: 50%;
   left: 50%;
+  /* height: 0; */
+  width: 0;
   opacity: 0;
   transform: translate(-50%, -50%);
   overflow: 0;
-  z-index: 99;
+  z-index: 9999;
 }
