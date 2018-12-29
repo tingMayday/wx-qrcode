@@ -1,0 +1,84 @@
+/* pages/test/test.wxss */
+page{
+  padding: 100rpx 30rpx;
+  background: #d8f7e88a;
+  box-sizing: border-box;
+}
+.canvas_box{
+  padding: 100rpx;
+  border: 2rpx dashed #85c682;
+}
+canvas{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+.flexBox{
+  display: flex;
+  align-items: center;
+}
+.flex1{
+  flex: 1;
+}
+.label{
+  width: 100rpx;
+  flex-shrink: 0;
+}
+.colorpicker{
+  width: 50rpx;
+  height: 50rpx;
+  background: hsla(120,0%,0%,1);
+  border: 2rpx solid #ccc;
+}
+.hide{
+  display: none;
+}
+.pb30{
+  padding-bottom: 30rpx;
+}
+.pb50{
+  padding-bottom: 50rpx;
+}
+.pr30{
+  padding-right: 30rpx;
+}
+input{
+  padding: 0 15rpx;
+  border: 2rpx solid #999;
+}
+.btn_area{
+  justify-content: center;
+  padding-top: 50rpx;
+}
+
+.btn{
+  padding: 10rpx 50rpx;
+  margin: 0 20rpx;
+  color: #fff;
+}
+.btn_1{
+  background:#f3948b;
+}
+.btn_2{
+  background:#80c883;
+}
+
+.mask{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 98;
+}
+.layer_box{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  overflow: 0;
+  z-index: 99;
+}

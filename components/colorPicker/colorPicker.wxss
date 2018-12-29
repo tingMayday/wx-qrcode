@@ -1,0 +1,120 @@
+.flexBox{
+  display: flex;
+  align-items: center;
+}
+.flex1{
+  flex: 1;
+}
+.color_pick_box{
+  width: 100%;
+  padding: 50rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+}
+.color_show{
+  height: 150rpx;
+  background: #000;
+  border: 2rpx solid #ddd;
+}
+.coutom_color{
+  justify-content: space-between;
+  padding: 20rpx 0 50rpx;
+}
+.coutom_color .custom_color_item{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx; 
+  background: #000;
+  border: 2rpx solid #ccc;
+}
+
+.color_slider {
+  padding-bottom: 50rpx;
+}
+.color_slider .color_slider_item{
+  display: flex;
+  padding-bottom: 20rpx;
+}
+.color_slider .label{
+  width: 80rpx;
+  padding-right: 30rpx;
+  text-align-last:justify;
+}
+.color_slider slider{
+  margin: 30rpx 0 10rpx;
+}
+.confirm_btn{
+  padding: 10rpx 0;
+  text-align: center;
+  background: #25c3f4;
+  color: #fff;
+}
+
+.h30{
+  height: 30rpx;
+}
+
+.Hcolor{
+  background: linear-gradient(
+    to right,
+    hsla(0, 100%, 50%, 1),
+    hsla(15, 100%, 50%, 1),
+    hsla(30, 100%, 50%, 1),
+    hsla(45, 100%, 50%, 1),
+    hsla(60, 100%, 50%, 1),
+    hsla(75, 100%, 50%, 1),
+    hsla(90, 100%, 50%, 1),
+    hsla(105, 100%, 50%, 1),
+    hsla(120, 100%, 50%, 1),
+    hsla(135, 100%, 50%, 1),
+    hsla(150, 100%, 50%, 1),
+    hsla(165, 100%, 50%, 1),
+    hsla(180, 100%, 50%, 1),	
+    hsla(195, 100%, 50%, 1),
+    hsla(210, 100%, 50%, 1),
+    hsla(225, 100%, 50%, 1),	
+    hsla(240, 100%, 50%, 1),	
+    hsla(255, 100%, 50%, 1),
+    hsla(270, 100%, 50%, 1),
+    hsla(285, 100%, 50%, 1),
+    hsla(300, 100%, 50%, 1),
+    hsla(315, 100%, 50%, 1),
+    hsla(330, 100%, 50%, 1),
+    hsla(345, 100%, 50%, 1),
+    hsla(360, 100%, 50%, 1)
+  )
+}
+.Scolor{
+  background: linear-gradient(
+    to right,
+    hsla(0, 0%, 50%, 1),
+    hsla(0, 20%, 50%, 1),
+    hsla(0, 40%, 50%, 1),
+    hsla(0, 60%, 50%, 1),
+    hsla(0, 80%, 50%, 1),
+    hsla(0, 100%, 50%, 1)
+  )
+}
+.Lcolor{
+  background: linear-gradient(
+    to right,
+    hsla(0, 100%, 0%, 1),
+    hsla(0, 100%, 20%, 1),
+    hsla(0, 100%, 40%, 1),
+    hsla(0, 100%, 60%, 1),
+    hsla(0, 100%, 80%, 1),
+    hsla(0, 100%, 100%, 1)
+  )
+}
+.Acolor{
+  background: linear-gradient(
+    to right,
+    hsla(0, 100%, 50%, 0),
+    hsla(0, 100%, 50%, 0.2),
+    hsla(0, 100%, 50%, 0.4),
+    hsla(0, 100%, 50%, 0.6),
+    hsla(0, 100%, 50%, 0.8),
+    hsla(0, 100%, 50%, 1)
+  )
+}

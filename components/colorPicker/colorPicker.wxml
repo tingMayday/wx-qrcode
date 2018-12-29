@@ -1,0 +1,52 @@
+<custom-component>
+  <view class="color_pick_box">
+    <view class="color_show" style="background:{{colorShow}}"></view>
+    <view class="coutom_color flexBox">
+      <view 
+        class="custom_color_item" 
+        wx:for="{{cusColor}}" 
+        wx:key
+        style="background:{{item}}"
+        data-color="{{item}}"
+        bindtap="colorSel"
+        ></view>
+    </view>
+    <block wx:if="{{showMore}}">
+      <view class="color_slider">
+        <view class="flexBox">
+          <view class="label">色相</view>
+          <view class="flex1">
+            <slider block-size="12" value="{{hslaArr[0]}}" bindchanging="_hslaSlider" data-idx="0"></slider>
+            <view class="Hcolor h30"></view>
+          </view>
+        </view>
+        <view class="flexBox">
+          <view class="label">饱和度</view>
+          <view class="flex1">
+            <slider block-size="12" value="{{hslaArr[1]}}" bindchanging="_hslaSlider" data-idx="1"></slider>
+            <view class="Scolor h30"></view>
+          </view>
+        </view>
+        <view class="flexBox">
+          <view class="label">亮度</view>
+          <view class="flex1">
+            <slider block-size="12" value="{{hslaArr[2]}}" bindchanging="_hslaSlider" data-idx="2"></slider>
+            <view class="Lcolor h30"></view>
+          </view>
+        </view>
+        <view class="flexBox">
+          <view class="label">透明度</view>
+          <view class="flex1">
+            <slider block-size="12" value="{{hslaArr[3]}}" bindchanging="_hslaSlider" data-idx="3"></slider>
+            <view class="Acolor h30"></view>
+          </view>
+        </view>
+      </view>
+      <view class="confirm_btn" bindtap="_colorConfirm">确定</view>
+    </block>
+    <block wx:else>
+      <view class="confirm_btn" bindtap="_showMore">更多</view>
+    </block>
+  </view>
+  
+</custom-component>

@@ -1,0 +1,35 @@
+
+
+<view class="flexBox pb30">
+  <view class="flexBox pr30">
+    <view class="label">前景色</view>
+    <view class="colorpicker" bindtap="showLayerBox" data-type="colorLight" style="background:{{colorLight}}"></view>
+  </view>
+  <view class="flexBox">
+    <view class="label">背景色</view>
+    <view class="colorpicker" bindtap="showLayerBox" data-type="colorDark" style="background:{{colorDark}}"></view>
+  </view>
+</view>
+<view class="flexBox pb50">
+  <view class="label">内容</view>
+  <input type="text" class="flex1" value="{{text}}" bindblur="bindText"></input>
+</view>
+
+<view class="canvas_box">
+  <canvas canvas-id="canvas"></canvas>
+</view>
+
+<view class="btn_area flexBox">
+  <view class="btn btn_1" bindtap="code">生成二维码</view>
+  <view class="btn btn_2" bindtap="download">下载图片</view>
+</view>
+
+
+<view class="mask" hidden='{{!showLayerBox}}' bindtap="hideLayerBox"></view>
+<view class="layer_box" animation="{{animationData}}">
+  <color-picker 
+    class='color_picker'
+    cus-color="{{cp_cColor}}" 
+    color-show="{{cp_colorShow}}" 
+    bindcolorsel="colorSel" />
+</view>
